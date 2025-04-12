@@ -35,7 +35,7 @@ public class AutoClicker {
             @Override public void nativeKeyTyped(NativeKeyEvent e) {}
         });
 
-        System.out.println("Autoclicker listo.\nPresiona 'X' para iniciar/detener el click izquierdo\nPresiona 'C' para iniciar/detener el click derecho\nxPresiona 'P' para cerrar el autoclicker.");
+        System.out.println("Autoclicker listo.\nPresiona 'X' para iniciar/detener el click izquierdo\nPresiona 'C' para iniciar/detener el click derecho\nPresiona 'P' para cerrar el autoclicker.");
         Thread.sleep(2000);
 
         while (programRunning) {
@@ -49,7 +49,15 @@ public class AutoClicker {
                 robot.mouseRelease(InputEvent.BUTTON3_DOWN_MASK);
             }
 
-            Thread.sleep(100); // Para que no explote la PCerda, antes de volver a revisar retrasa la revision 0.1 segundos, de lo contrario se revisaria infinitamente consumiendo el 100% de la CPU
+            Thread.sleep(40); 
+            /*
+            * ------------------------------------------------------------
+            * ==>Thread.sleep(40)<== Es una pausa para evitar un uso excesivo de CPU. 
+            * Este retraso de 40ms asegura que la revisión no consuma el 100% de los recursos.
+            * Cuanto menor sea el tiempo de espera, mayor será la tasa de clics por segundo (CPS),
+            * pero también aumentará el consumo de la CPU proporcionalmente.
+            * ------------------------------------------------------------
+            */
         }
 
         GlobalScreen.unregisterNativeHook(); // Limpiezap
